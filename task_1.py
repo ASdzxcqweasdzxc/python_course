@@ -32,7 +32,7 @@ def elephant():
 
 
 # subtask 10
-def if_equal():
+def is_equal():
     a0 = int(input("a0="))
     a1 = int(input("a1="))
     b0 = int(input("b0="))
@@ -46,8 +46,8 @@ def if_equal():
 
 # subtask 11
 def equation():
-    a = 3
-    b = 6
+    a = int(input("a="))
+    b = int(input("b="))
 
     if (a == 0 or b % a != 0):
         print("NO")
@@ -59,11 +59,19 @@ def equation():
 
 # subtask 12
 def metro():
-    p1 = 15
-    p5 = 70
-    p10 = 125
-    p20 = 230
-    p60 = 440
+    p = {1: 15, 5: 70, 10: 125, 20: 230, 60: 440}
+    q = [1, 5, 10, 20, 60]
+    n = 11
+
+    for item in range(len(q)):
+        if (n == q[item]):
+            print("1 ticket for %s rub" % p[q[item]])
+        elif (n > q[item] and n < q[item+1]):
+            print(q[item])
+            a = n * p[1]
+            print("a=%s" % a)
+            b = n // q[item]
+            print(b)
 
 
 # subtask 13
@@ -108,8 +116,9 @@ def squares_summ():
 
 # max_num()
 # elephant()
-# if_equal()
-equation()
+# is_equal()
+# equation()
+metro()
 # steaks()
 # squares_summ()
 # natural_odd()
