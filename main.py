@@ -1,4 +1,5 @@
-import requests
+import task_1
 
-s = requests.get("https://github.com")
-print(s.headers)
+
+task_1.natural_odd()
+
