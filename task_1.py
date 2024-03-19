@@ -59,19 +59,32 @@ def equation():
 
 # subtask 12
 def metro():
-    p = {1: 15, 5: 70, 10: 125, 20: 230, 60: 440}
-    q = [1, 5, 10, 20, 60]
-    n = 11
+    tickets_q = [1, 5, 10, 20, 60]
+    tickets_p = {1: 15, 5: 70, 10: 125, 20: 230, 60: 440}
+    n = int(input("n="))
+    # n: int = 156
+    remainder: int = n
+    min_price: int = 0
 
-    for item in range(len(q)):
-        if (n == q[item]):
-            print("1 ticket for %s rub" % p[q[item]])
-        elif (n > q[item] and n < q[item+1]):
-            print(q[item])
-            a = n * p[1]
-            print("a=%s" % a)
-            b = n // q[item]
-            print(b)
+    tmp_str = ""
+    item = len(tickets_q) - 1
+    while remainder != 0:
+        if n >= tickets_q[item]:
+            tmp_val = remainder // tickets_q[item]
+            if tmp_val > 0:
+                min_price += tmp_val * tickets_p[tickets_q[item]]
+                tmp_str += f"{remainder // tickets_q[item]}x{tickets_q[item]}={tmp_val * tickets_p[tickets_q[item]]}rub, "
+            remainder = (lambda x, y: x % y)(n, tickets_q[item])
+        item -= 1
+
+    for i in reversed(range(len(tickets_q))):
+        if n < tickets_q[i]:
+            tmp_price = tickets_p[tickets_q[i]]
+            if tmp_price < min_price:
+                min_price = tmp_price
+                tmp_str = f"1x{tickets_p[tickets_q[i]]}={min_price}, "
+
+    print(f"{tmp_str}total of: {min_price}rub")
 
 
 # subtask 13
